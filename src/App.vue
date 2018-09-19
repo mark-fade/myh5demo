@@ -1,13 +1,49 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <h1>{{title}}</h1>
+    <input v-model="newItem" v-on:keyup.enter="addNew">
+    <ul>
+      <li v-for="item in items" :key="item.label"
+      v-bind:class="{finished:item.isFinished}"
+      v-on:click="toggleFinish(item)">
+        {{item.label}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import Store from "./store.js"
 export default {
-  name: 'App'
+  data:function(){
+    return{
+      title:"my project 0",
+      items:Store.fetch(),
+      newItem:""
+    }
+  },
+  methods: {
+      toggleFinish:function(item){
+        item.isFinished = !item.isFinished;
+      },
+      addNew:function(){
+      this.items.push(
+        {
+          label:this.newItem,
+          isFinished:false
+        }
+      );
+    }
+  },
+  watch:{
+    items: {
+      handler:function(items){
+        Store.save(items)
+      },
+      deep:true
+    }
+  }
+    
 }
 </script>
 
@@ -20,4 +56,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.finished{
+  text-decoration: underline;
+  color: red;
+}
+
 </style>
