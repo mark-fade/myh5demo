@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h1>{{title}}</h1>
+
     <input v-model="newItem" v-on:keyup.enter="addNew">
     <ul>
       <li v-for="item in items" :key="item.label"
@@ -19,7 +20,8 @@ export default {
     return{
       title:"my first project",
       items:Store.fetch(),
-      newItem:""
+      newItem:"",
+      
     }
   },
   methods: {
