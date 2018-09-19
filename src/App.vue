@@ -17,7 +17,7 @@ import Store from "./store.js"
 export default {
   data:function(){
     return{
-      title:"my project 0",
+      title:"my first project",
       items:Store.fetch(),
       newItem:""
     }
