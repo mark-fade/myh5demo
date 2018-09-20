@@ -1,51 +1,33 @@
 <template>
   <div id="app">
-    <h1>{{title}}</h1>
-
-    <input v-model="newItem" v-on:keyup.enter="addNew">
-    <ul>
-      <li v-for="item in items" :key="item.label"
-      v-bind:class="{finished:item.isFinished}"
-      v-on:click="toggleFinish(item)">
-        {{item.label}}
-      </li>
-    </ul>
+    <section class="welcome" v-show="welcome" transition="welcome"></section>
+    <button id="bt-vuejs" v-on:click="toVueJsPage()">vue.js学习</button>
   </div>
 </template>
 
 <script>
-import Store from "./store.js"
+import Store from "./utils/store.js"
 export default {
   data:function(){
     return{
-      title:"my first project",
-      items:Store.fetch(),
-      newItem:"",
-      
+      title:"仿界面",
+      welcome: true,//欢迎页
     }
   },
+  created(){
+    setTimeout(() => {
+      this.welcome=false;
+    }, 1000);
+  },
   methods: {
-      toggleFinish:function(item){
-        item.isFinished = !item.isFinished;
-      },
-      addNew:function(){
-      this.items.push(
-        {
-          label:this.newItem,
-          isFinished:false
-        }
-      );
+    toVueJsPage:function(){
+      this.$router.push('/vueJsStudy');
     }
   },
   watch:{
-    items: {
-      handler:function(items){
-        Store.save(items)
-      },
-      deep:true
-    }
+
   }
-    
+
 }
 </script>
 
@@ -62,5 +44,48 @@ export default {
   text-decoration: underline;
   color: red;
 }
-
+.welcome {
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: .25s all linear;
+    background: url(./assets/images/launchimage.png) no-repeat center center;
+    background-size: cover;
+}
+.mobile-tips{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0,0,0,.75);
+    text-align: center;
+    color: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mobile-tips-inner{
+    width: 330px;
+    padding-bottom: 200px;
+}
+.mobile-model{
+    flex-grow: 1;
+}
+#bt-vuejs{
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  border-radius: 50px;
+  border-color: red;
+  border-width: 1px;
+  position: fixed;
+  bottom:100px;
+  right: 20px;
+}
 </style>

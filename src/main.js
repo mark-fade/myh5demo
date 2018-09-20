@@ -3,8 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import vueJsStudy from './views/vueJsStudy.vue'
 
 Vue.config.productionTip = false
+
 
 /* eslint-disable no-new */
 new Vue({
