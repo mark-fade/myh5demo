@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <div>
-      <h1>this is HelloWorld</h1>
+      <h1>this is vueJsStudy</h1>
   </div>
 </template>
 
