@@ -2,6 +2,7 @@
   <div id="app">
     <section class="welcome" v-show="welcome" transition="welcome"></section>
     <button id="bt-vuejs" v-on:click="toVueJsPage()">vue.js学习</button>
+    <router-link to="/HelloWorld">点击我跳转</router-link>
   </div>
 </template>
 
@@ -17,11 +18,11 @@ export default {
   created(){
     setTimeout(() => {
       this.welcome=false;
-    }, 1000);
+    }, 500);
   },
   methods: {
     toVueJsPage:function(){
-      this.$router.push('/vueJsStudy');
+      this.$router.push("/vueJsStudy");
     }
   },
   watch:{
@@ -54,27 +55,6 @@ export default {
     transition: .25s all linear;
     background: url(./assets/images/launchimage.png) no-repeat center center;
     background-size: cover;
-}
-.mobile-tips{
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    background-color: rgba(0,0,0,.75);
-    text-align: center;
-    color: #cccccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.mobile-tips-inner{
-    width: 330px;
-    padding-bottom: 200px;
-}
-.mobile-model{
-    flex-grow: 1;
 }
 #bt-vuejs{
   background-color: blue;
