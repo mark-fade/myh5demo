@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div>
+  <div >
       <h1>this is vueJsStudy</h1>
   </div>
 </template>
@@ -24,5 +24,6 @@ export default {
 }
 
 </script>
+
 <style lang='scss' scoped>
 </style>

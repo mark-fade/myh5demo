@@ -2,7 +2,7 @@
   <div id="app">
     <section class="welcome" v-show="welcome" transition="welcome"></section>
     <button id="bt-vuejs" v-on:click="toVueJsPage()">vue.js学习</button>
-    <router-link to="/HelloWorld">点击我跳转</router-link>
+    <router-view v-show="isShowRouterView"></router-view>
   </div>
 </template>
 
@@ -13,6 +13,7 @@ export default {
     return{
       title:"仿界面",
       welcome: true,//欢迎页
+      isShowRouterView:false
     }
   },
   created(){
@@ -22,6 +23,7 @@ export default {
   },
   methods: {
     toVueJsPage:function(){
+      this.isShowRouterView = true;
       this.$router.push("/vueJsStudy");
     }
   },
